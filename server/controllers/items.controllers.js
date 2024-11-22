@@ -2,7 +2,7 @@ import Item from '../models/item.model.js';
 import { v2 as cloudinary } from 'cloudinary';
 
 
-
+// get all items for the item page
 export const getAllItems = async (req, res) => {
     try {
         const items = await Item.find();
@@ -12,7 +12,7 @@ export const getAllItems = async (req, res) => {
     }
 }
 
-
+//get an item by it's id
 export const getItemById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -59,7 +59,7 @@ export const createItem = async (req, res) => {
     }
 };
 
-
+// item search controller
 export const searchItem = async (req, res) => {
     const { query } = req.query;
     try {
@@ -70,6 +70,7 @@ export const searchItem = async (req, res) => {
     }
 }
 
+// item update controller
 export const updateItemById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -84,6 +85,7 @@ export const updateItemById = async (req, res) => {
     }
 }
 
+// item delete controller
 export const deleteItemById = async (req, res) => {
     const { id } = req.params;
     try {

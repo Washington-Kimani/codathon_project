@@ -4,7 +4,6 @@ import {
     createItem,
     getAllItems,
     getItemById,
-    searchItem,
     updateItemById
 } from '../controllers/items.controllers.js';
 const router = Router();
@@ -12,13 +11,14 @@ const router = Router();
 // Set up multer for file upload handling
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Specify where to save the uploaded file temporarily
+        cb(null, 'server/uploads/');
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + "-" + file.originalname); // Give the file a unique name
+        cb(null, Date.now() + "-" + file.originalname);
     }
 });
 
+// multer middleware for file upload handling
 const upload = multer({ storage: storage });
 
 
@@ -28,11 +28,10 @@ router.get('/', getAllItems);
 // get one item
 router.get('/:id', getItemById);
 
-// search items by query
-router.get('/search', searchItem);
-
+// upload an item with image
 router.post('/upload',upload.single('image'), createItem);
 
+// route to get item by id
 router.put('/:id', updateItemById);
 
 export default router;
