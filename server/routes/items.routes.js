@@ -32,6 +32,6 @@ router.get('/:id', getItemById);
 router.post('/upload',upload.single('image'), createItem);
 
 // route to get item by id
-router.put('/:id', updateItemById);
+router.put('/update/:id', updateItemById);
 
 export default router;

@@ -16,6 +16,7 @@ function Items({searchQuery}) {
             setFilteredItems(result.data); // Initially display all items
         }
 
+
         fetchData();
     },[])
     useEffect(() => {
